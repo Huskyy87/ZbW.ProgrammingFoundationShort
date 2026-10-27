@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="Hausaufgabe01BMI/Hausaufgabe01BMI.csproj">
+    <Platform Project="x64" />
+  </Project>
+</Solution>
