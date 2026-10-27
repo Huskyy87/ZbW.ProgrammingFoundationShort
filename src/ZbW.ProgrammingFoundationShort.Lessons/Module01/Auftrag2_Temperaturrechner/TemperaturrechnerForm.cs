@@ -19,6 +19,8 @@ public partial class TemperaturrechnerForm : Form
   // TODO 1: Konstante für den absoluten Nullpunkt definieren
   //         private const double AbsoluteZero = -273.15;
 
+  private const double AbsoluteZero = -273.15;
+
   public TemperaturrechnerForm()
   {
     InitializeComponent();
@@ -30,12 +32,27 @@ public partial class TemperaturrechnerForm : Form
     // TODO 2: Wert aus TxtCelsius lesen (double.TryParse)
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
+    if (!double.TryParse(TxtCelsius.Text, out double celsius))
+    {
+      MessageBox.Show("Ungültige Eingabe. Bitte eine Zahl eingeben");
+      return;
+    }
+
     // TODO 3: Prüfen ob Wert < AbsoluteZero
     //         → MessageBox mit Warnung, aber weiter rechnen
 
+    if (celsius < AbsoluteZero)
+    {
+      MessageBox.Show($"Die Temperatur liegt unter dem absoluten Nullpunkt ({AbsoluteZero}°C).");
+    }
+
     // TODO 4: Formel anwenden: fahrenheit = celsius * 9.0 / 5.0 + 32
 
+    double fahrenheit = celsius * 9.0 / 5.0 + 32;
+
     // TODO 5: Ergebnis in TxtFahrenheit anzeigen ($"{fahrenheit:F2}")
+
+     TxtFahrenheit.Text = $"{fahrenheit:F2}";
   }
 
   // ── Fahrenheit → Celsius ────────────────────────────────────
@@ -44,10 +61,25 @@ public partial class TemperaturrechnerForm : Form
     // TODO 6: Wert aus TxtFahrenheit lesen (double.TryParse)
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
+    if (!double.TryParse(TxtFahrenheit.Text, out double fahrenheit))
+    {
+      MessageBox.Show("Ungültige Eingabe. Bitte eine Zahl eingeben");
+      return;
+    }
+
     // TODO 7: Formel anwenden: celsius = (fahrenheit - 32) * 5.0 / 9.0
+
+    double celsius = (fahrenheit - 32) * 5.0 / 9.0;
 
     // TODO 8: Prüfen ob Ergebnis < AbsoluteZero → Warnung
 
+    if (celsius < AbsoluteZero)
+    {
+      MessageBox.Show($"Die Temperatur liegt unter dem absoluten Nullpunkt ({AbsoluteZero}°C).");
+    }
+
     // TODO 9: Ergebnis in TxtCelsius anzeigen ($"{celsius:F2}")
+
+    TxtCelsius.Text = ($"{celsius:F2}");
   }
 }
