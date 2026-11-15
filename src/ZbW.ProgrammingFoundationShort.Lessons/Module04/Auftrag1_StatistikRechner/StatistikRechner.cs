@@ -18,20 +18,47 @@ public static class StatistikRechner
     // TODO 1: int[5]-Array deklarieren
     //         5 Zahlen einlesen und im Array speichern
 
+    int[] array = new int[5];
+    for (int i = 0; i < array.Length; i++)
+    {
+      Console.WriteLine($"Zahl {i + 1}");
+      int.TryParse(Console.ReadLine() ?? "", out array[i]);
+    }
+
+
     // TODO 2: Methoden aufrufen und Ergebnis ausgeben
     //         Console.WriteLine($"Min: {Minimum(zahlen)}, Max: {Maximum(zahlen)}, Avg: {Average(zahlen):F2}");
   }
 
   public static int Minimum(int[] zahlen)
   {
-    // TODO: Kleinste Zahl finden (Schleife, kein LINQ)
-    throw new NotImplementedException("TODO: Minimum implementieren");
+    int min = zahlen[0];                      // Zettel 1: einfach merken
+
+    for (int i = 1; i < zahlen.Length; i++)   // Zettel 2 bis 5 nacheinander anschauen
+    {
+      if (zahlen[i] < min)                  // Ist dieser Zettel kleiner?
+      {
+        min = zahlen[i];                  // Ja → neue Zahl merken
+      }
+    }
+
+    return min;                               // Am Schluss: die gemerkte Zahl abgeben 🎁
   }
+
 
   public static int Maximum(int[] zahlen)
   {
-    // TODO: Grösste Zahl finden (Schleife, kein LINQ)
-    throw new NotImplementedException("TODO: Maximum implementieren");
+    int max = zahlen[0];                      
+
+    for (int i = 1; i < zahlen.Length; i++)   
+    {
+      if (zahlen[i] > max)                  
+      {
+        max = zahlen[i];                  
+      }
+    }
+
+    return max;                               
   }
 
   public static double Average(int[] zahlen)

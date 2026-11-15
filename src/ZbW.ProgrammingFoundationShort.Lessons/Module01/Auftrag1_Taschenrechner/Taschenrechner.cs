@@ -64,8 +64,17 @@ public static class Taschenrechner
 
     double result;
     if (operation == "+") { result = zahl1 + zahl2; }
-    else if (operation == "-") { result = zahl1 - zahl2; }
-    else if (operation == "*") { result = zahl1 * zahl2; }
+
+      else if (operation == "-")
+    {
+      result = zahl1 - zahl2;
+    }
+
+    else if (operation == "*")
+    {
+      result = zahl1 * zahl2;
+    }
+
     else if (operation == "/")
     {
 
